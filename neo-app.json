@@ -41,7 +41,7 @@
       "description": "SAPUI5 Test Resources"
     },
     {
-      "path": "/ES5",
+      "path": "/destinations/ES5",
       "target": {
         "type": "destination",
         "name": "ES5"

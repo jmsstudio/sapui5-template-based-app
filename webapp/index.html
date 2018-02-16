@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Products Management</title>
 
-	<!-- Bootstrapping UI5 -->
-	<script id="sap-ui-bootstrap"
-			src="resources/sap-ui-core.js"
-			data-sap-ui-libs="sap.m, sap.f"
-			data-sap-ui-theme="sap_belize"
-			data-sap-ui-compatVersion="edge"
-			data-sap-ui-preload="async"
-			data-sap-ui-resourceroots='{"br.com.jmsstudio.productsmanagement.ProductsManagement": "."}'
-			data-sap-ui-frameOptions="trusted">
-	</script>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Products Management</title>
 
-	<script>
-		sap.ui.getCore().attachInit(function () {
-			sap.ui.require([
-				"sap/m/Shell",
-				"sap/ui/core/ComponentContainer"
-			], function (Shell, ComponentContainer) {
-				// initialize the UI component
-				new Shell({
-					app: new ComponentContainer({
-						height: "100%",
-						name: "br.com.jmsstudio.productsmanagement.ProductsManagement",
-						settings: {
-							id: "ProductsManagement"
-						}
-					})
-				}).placeAt("content");
+		<!-- Bootstrapping UI5 -->
+		<script id="sap-ui-bootstrap" src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js" data-sap-ui-libs="sap.m, sap.f"
+		 data-sap-ui-theme="sap_belize" data-sap-ui-compatVersion="edge" data-sap-ui-preload="async" data-sap-ui-resourceroots='{"br.com.jmsstudio.productsmanagement.ProductsManagement": "."}'
+		 data-sap-ui-frameOptions="trusted">
+		</script>
+
+		<script>
+			sap.ui.getCore().attachInit(function () {
+				sap.ui.require([
+					"sap/m/Shell",
+					"sap/ui/core/ComponentContainer"
+				], function (Shell, ComponentContainer) {
+					// initialize the UI component
+					new Shell({
+						app: new ComponentContainer({
+							height: "100%",
+							name: "br.com.jmsstudio.productsmanagement.ProductsManagement",
+							settings: {
+								id: "ProductsManagement"
+							}
+						})
+					}).placeAt("content");
+				});
 			});
-		});
-	</script>
+		</script>
 
-</head>
+	</head>
 
-<!-- UI Content -->
-<body class="sapUiBody" id="content">
-</body>
+	<!-- UI Content -->
+
+	<body class="sapUiBody" id="content">
+	</body>
+
 </html>

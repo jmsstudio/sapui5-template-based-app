@@ -51,7 +51,7 @@
                 <Property Name="CreatedAt" Type="Edm.DateTime" Precision="7" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="ChangedAt" Type="Edm.DateTime" Precision="7" ConcurrencyMode="Fixed" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="ToSalesOrderLineItems" Relationship="GWSAMPLE_BASIC.Assoc_Product_SalesOrderLineItems" FromRole="FromRole_Assoc_Product_SalesOrderLineItems" ToRole="ToRole_Assoc_Product_SalesOrderLineItems"/>
-                <NavigationProperty Name="ToSupplier" Relationship="GWSAMPLE_BASIC.Assoc_BusinessPartner_Products" FromRole="ToRole_Assoc_BusinessPartner_Products" ToRole="FromRole_Assoc_BusinessPartner_Products"/>
+                <NavigationProperty Name="ToSupplier" Relationship="/IWBEP/GWSAMPLE_BASIC.Assoc_Products_BusinessPartner" FromRole="FromRole_Assoc_Products_BusinessPartner" ToRole="ToRole_Assoc_Products_BusinessPartner"/>
             </EntityType>
             <EntityType Name="SalesOrder" sap:content-version="1">
                 <Key>
@@ -259,6 +259,18 @@
                     </Principal>
                     <Dependent Role="ToRole_Assoc_BusinessPartner_Products">
                         <PropertyRef Name="SupplierID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="Assoc_Products_BusinessPartner" sap:contentversion="1">
+                <End Type="/IWBEP/GWSAMPLE_BASIC.BusinessPartner" Multiplicity="1" Role="FromRole_Assoc_BusinessPartner_Products"/>
+                <End Type="/IWBEP/GWSAMPLE_BASIC.Product" Multiplicity="*" Role="ToRole_Assoc_BusinessPartner_Products"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Assoc_Products_BusinessPartner">
+                        <PropertyRef Name="SupplierID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Assoc_Products_BusinessPartner">
+                        <PropertyRef Name="BusinessPartnerID"/>
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
@@ -490,6 +502,10 @@
                 <AssociationSet Name="Assoc_BusinessPartner_Products_AssocSet" Association="GWSAMPLE_BASIC.Assoc_BusinessPartner_Products" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="BusinessPartnerSet" Role="FromRole_Assoc_BusinessPartner_Products"/>
                     <End EntitySet="ProductSet" Role="ToRole_Assoc_BusinessPartner_Products"/>
+                </AssociationSet>
+                <AssociationSet Name="Assoc_Products_BusinessPartner_AssocSet" Association="/IWBEP/GWSAMPLE_BASIC.Assoc_Products_BusinessPartner" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ProductSet" Role="FromRole_Assoc_Products_BusinessPartner"/>
+                    <End EntitySet="BusinessPartnerSet" Role="ToRole_Assoc_Products_BusinessPartner"/>
                 </AssociationSet>
                 <AssociationSet Name="Assoc_VH_UnitWeight_Products_AssocSet" Association="GWSAMPLE_BASIC.Assoc_VH_UnitWeight_Products" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="VH_UnitWeightSet" Role="FromRole_Assoc_VH_UnitWeight_Products"/>

@@ -149,6 +149,19 @@ sap.ui.define(
         oTable.getBinding('items').refresh();
       },
 
+      /**
+       * Event handler for press event on object identifier. Opens details popover to show product dimensions.
+       * @public
+       */
+      onShowDetailPopover: function(event) {
+        var popover = this.byId('dimensionsPopover');
+        var source = event.getSource();
+        popover.bindElement(source.getBindingContext().getPath());
+
+        //opens the dialog
+        popover.openBy(event.getParameter('domRef'));
+      },
+
       onIconTabBarSelect: function(event) {
         var key = event.getParameter('key');
         var filter = this._filters[key];

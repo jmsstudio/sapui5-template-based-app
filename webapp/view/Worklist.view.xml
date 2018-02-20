@@ -2,7 +2,8 @@
 	controllerName="br.com.jmsstudio.productsmanagement.ProductsManagement.controller.Worklist"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:semantic="sap.f.semantic">
+	xmlns:semantic="sap.f.semantic"
+	xmlns:l="sap.ui.layout">
 
 	<semantic:SemanticPage
 		id="page"
@@ -99,6 +100,8 @@
 									<ObjectIdentifier
 										title="{ProductID}"
 										text="{Name}"
+										titleActive="true"
+										titlePress="onShowDetailPopover"
 										/>
 									<Text text="{SupplierName}"/>
 									<Link text="{ToSupplier/WebAddress}" href="{ToSupplier/WebAddress}" target="_blank"/>
@@ -115,6 +118,23 @@
 				</content>
 			</IconTabBar>			
 		</semantic:content>
+
+		<semantic:dependents>
+			<ResponsivePopover id="dimensionsPopover"
+				title="{i18n>dimensionsTitle}"
+				class="sapUiPopupWithPadding">
+				<content>
+					<l:Grid>
+						<l:content>
+							<Text text="{i18n>productWidth}: {path: 'Width', formatter: '.formatter.numberUnit'} {DimUnit}" />
+							<Text text="{i18n>productDepth}: {path: 'Depth', formatter: '.formatter.numberUnit'} {DimUnit}" />
+							<Text text="{i18n>productHeight}: {path: 'Height', formatter: '.formatter.numberUnit'} {DimUnit}" />
+							<Text text="{i18n>productWeight}: {path: 'WeightMeasure', formatter: '.formatter.numberUnit'} {WeightUnit}" />
+						</l:content>
+					</l:Grid>
+				</content>
+			</ResponsivePopover>
+		</semantic:dependents>
 
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>

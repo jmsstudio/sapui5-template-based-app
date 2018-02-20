@@ -1,38 +1,30 @@
-<mvc:View
-	controllerName="br.com.jmsstudio.productsmanagement.ProductsManagement.controller.Object"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
+<mvc:View controllerName="br.com.jmsstudio.productsmanagement.ProductsManagement.controller.Object" 
+	xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:form="sap.ui.layout.form" 
+	xmlns:core="sap.ui.core"
 	xmlns:semantic="sap.f.semantic">
-
-	<semantic:SemanticPage
-		id="page"
-		headerPinnable="false"
-		toggleHeaderOnTitleClick="false"
-		busy="{objectView>/busy}"
-		busyIndicatorDelay="{objectView>/delay}">
-
+	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false" busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
 		<semantic:titleHeading>
 			<Title text="{Name}" />
 		</semantic:titleHeading>
-
-		<semantic:headerContent>
-			<ObjectNumber
-				number="{
-					path: 'Price',
-					formatter: '.formatter.numberUnit'
-				}"
-				numberUnit="{CurrencyCode}"
-			/>
-			<attributes>
-				<ObjectAttribute text="{Name}"/>
-			</attributes>
-		</semantic:headerContent>
-
+		<semantic:content>
+			<ObjectHeader id="objectHeader" title="{ProductID}" responsive="true" number="{
+						  	path: 'Price',
+							formatter: '.formatter.numberUnit'
+						  }" numberUnit="{CurrencyCode}">
+				<attributes>
+					<ObjectAttribute text="{Name}"/>
+				</attributes>
+			</ObjectHeader>
+		
+			<Panel>
+				<mvc:XMLView viewName="br.com.jmsstudio.productsmanagement.ProductsManagement.view.ProductDetails" />
+				<core:Fragment fragmentName="br.com.jmsstudio.productsmanagement.ProductsManagement.view.SupplierInfo" type="XML" />
+			</Panel>
+		</semantic:content>
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
 		</semantic:sendEmailAction>
-
-
 	</semantic:SemanticPage>
-
 </mvc:View>

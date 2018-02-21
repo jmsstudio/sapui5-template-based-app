@@ -3,28 +3,37 @@
 	xmlns:mvc="sap.ui.core.mvc" 
 	xmlns:form="sap.ui.layout.form" 
 	xmlns:core="sap.ui.core"
-	xmlns:semantic="sap.f.semantic">
-	<semantic:SemanticPage id="page" headerPinnable="false" toggleHeaderOnTitleClick="false" busy="{objectView>/busy}" busyIndicatorDelay="{objectView>/delay}">
-		<semantic:titleHeading>
-			<Title text="{Name}" />
-		</semantic:titleHeading>
+	xmlns:semantic="sap.m.semantic">
+
+	<semantic:FullscreenPage id="page" 
+		navButtonPress="onNavBack"
+		showNavButton="true"
+		title="{i18n>objectTitle}"
+		busy="{objectView>/busy}" 
+		busyIndicatorDelay="{objectView>/delay}">
+		
 		<semantic:content>
-			<ObjectHeader id="objectHeader" title="{ProductID}" responsive="true" number="{
-						  	path: 'Price',
-							formatter: '.formatter.numberUnit'
-						  }" numberUnit="{CurrencyCode}">
+			<ObjectHeader 
+					id="objectHeader" 
+					title="{ProductID}" 
+					responsive="true" 
+					number="{
+						path: 'Price',
+						formatter: '.formatter.numberUnit'
+					}" 
+					numberUnit="{CurrencyCode}"
+					titleActive="true"
+					titlePress="onShowDetailPopover" >
 				<attributes>
 					<ObjectAttribute text="{Name}"/>
 				</attributes>
 			</ObjectHeader>
-		
-			<Panel>
+
 				<mvc:XMLView viewName="br.com.jmsstudio.productsmanagement.ProductsManagement.view.ProductDetails" />
 				<core:Fragment fragmentName="br.com.jmsstudio.productsmanagement.ProductsManagement.view.SupplierInfo" type="XML" />
-			</Panel>
 		</semantic:content>
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
 		</semantic:sendEmailAction>
-	</semantic:SemanticPage>
+	</semantic:FullscreenPage>
 </mvc:View>

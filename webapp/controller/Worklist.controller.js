@@ -154,7 +154,7 @@ sap.ui.define(
        * @public
        */
       onShowDetailPopover: function(event) {
-        var popover = this.byId('dimensionsPopover');
+        var popover = this._getPopover();
         var source = event.getSource();
         popover.bindElement(source.getBindingContext().getPath());
 
@@ -189,6 +189,21 @@ sap.ui.define(
         this.getRouter().navTo('object', {
           objectId: oItem.getBindingContext().getProperty('ProductID'),
         });
+      },
+
+      /**
+       * creates a popover
+       */
+      _getPopover: function() {
+        if (!this._popover) {
+          this._popover = sap.ui.xmlfragment(
+            'br.com.jmsstudio.productsmanagement.ProductsManagement.view.ResponsivePopover',
+            this
+          );
+          this.getView().addDependent(this._popover);
+        }
+
+        return this._popover;
       },
 
       /**

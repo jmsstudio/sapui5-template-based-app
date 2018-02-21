@@ -119,23 +119,6 @@
 			</IconTabBar>			
 		</semantic:content>
 
-		<semantic:dependents>
-			<ResponsivePopover id="dimensionsPopover"
-				title="{i18n>dimensionsTitle}"
-				class="sapUiPopupWithPadding">
-				<content>
-					<l:Grid>
-						<l:content>
-							<Text text="{i18n>productWidth}: {path: 'Width', formatter: '.formatter.numberUnit'} {DimUnit}" />
-							<Text text="{i18n>productDepth}: {path: 'Depth', formatter: '.formatter.numberUnit'} {DimUnit}" />
-							<Text text="{i18n>productHeight}: {path: 'Height', formatter: '.formatter.numberUnit'} {DimUnit}" />
-							<Text text="{i18n>productWeight}: {path: 'WeightMeasure', formatter: '.formatter.numberUnit'} {WeightUnit}" />
-						</l:content>
-					</l:Grid>
-				</content>
-			</ResponsivePopover>
-		</semantic:dependents>
-
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
 		</semantic:sendEmailAction>

@@ -66,6 +66,19 @@ sap.ui.define(
         }
       },
 
+      /**
+       * Event handler for press event on object identifier. Opens details popover to show product dimensions.
+       * @public
+       */
+      onShowDetailPopover: function(event) {
+        var popover = this._getPopover();
+        var source = event.getSource();
+        popover.bindElement(source.getBindingContext().getPath());
+
+        //opens the dialog
+        popover.openBy(event.getParameter('domRef'));
+      },
+
       /* =========================================================== */
       /* internal methods                                            */
       /* =========================================================== */
@@ -88,6 +101,21 @@ sap.ui.define(
               this._bindView('/' + sObjectPath);
             }.bind(this)
           );
+      },
+
+      /**
+       * creates a popover
+       */
+      _getPopover: function() {
+        if (!this._popover) {
+          this._popover = sap.ui.xmlfragment(
+            'br.com.jmsstudio.productsmanagement.ProductsManagement.view.ResponsivePopover',
+            this
+          );
+          this.getView().addDependent(this._popover);
+        }
+
+        return this._popover;
       },
 
       /**

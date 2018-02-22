@@ -68,7 +68,10 @@
       },
       "": {
         "dataSource": "mainService",
-        "preload": true
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay"
+        }
       }
     },
     "routing": {
@@ -93,6 +96,11 @@
           "pattern": "ProductSet/{objectId}",
           "name": "object",
           "target": ["object"]
+        },
+        {
+          "pattern": "AddProduct",
+          "name": "addProduct",
+          "target": ["addProduct"]
         }
       ],
       "targets": {
@@ -111,6 +119,12 @@
         "objectNotFound": {
           "viewName": "ObjectNotFound",
           "viewId": "objectNotFound"
+        },
+        "addProduct": {
+          "viewName": "AddProduct",
+          "viewId": "addProduct",
+          "viewLevel": 3,
+          "title": "{i18n>addProductViewTitle}"
         },
         "notFound": {
           "viewName": "NotFound",

@@ -1,0 +1,44 @@
+<mvc:View controllerName="br.com.jmsstudio.productsmanagement.ProductsManagement.controller.AddProduct" 
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:smartform="sap.ui.comp.smartform"
+    xmlns:smartfield="sap.ui.comp.smartfield">
+    <semantic:FullscreenPage id="page" 
+        title="{i18n>addProductViewTitle}"
+        showNavButton="true"
+        navButtonPress="onNavBack">
+        
+        <semantic:content>
+            <smartform:SmartForm id="form"
+                editable="true"
+                title="{i18n>formTitle}"
+                class="sapUiResponsiveMargin">
+
+                <smartform:Group id="formGroup" label="{i18n>formGroupLabel}">
+                    <smartform:GroupElement>
+                        <smartfield:SmartField id="nameField" value="{Name}" />
+                    </smartform:GroupElement>
+                    <smartform:GroupElement>
+                        <smartfield:SmartField id="categoryField" value="{Category}" />
+                    </smartform:GroupElement>
+                    <smartform:GroupElement>
+                        <smartfield:SmartField id="supplierIDField" value="{SupplierID}" />
+                    </smartform:GroupElement>
+                    <smartform:GroupElement>
+                        <smartfield:SmartField id="priceField" value="{Price}" />
+                    </smartform:GroupElement>
+                </smartform:Group>
+
+            </smartform:SmartForm>
+        </semantic:content>
+
+        <semantic:saveAction>
+            <semantic:SaveAction id="save" press="onSave" />
+        </semantic:saveAction>
+        <semantic:cancelAction>
+            <semantic:CancelAction id="cancel" press="onCancel" />
+        </semantic:cancelAction>
+
+    </semantic:FullscreenPage>
+</mvc:View>

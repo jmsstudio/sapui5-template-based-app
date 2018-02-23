@@ -4,9 +4,10 @@ sap.ui.define(
     'br/com/jmsstudio/productsmanagement/ProductsManagement/controller/BaseController',
     'sap/ui/model/json/JSONModel',
     'sap/ui/core/routing/History',
+    'sap/m/MessageToast',
     'br/com/jmsstudio/productsmanagement/ProductsManagement/model/formatter',
   ],
-  function(BaseController, JSONModel, History, formatter) {
+  function(BaseController, JSONModel, History, MessageToast, formatter) {
     'use strict';
 
     return BaseController.extend('br.com.jmsstudio.productsmanagement.ProductsManagement.controller.Object', {
@@ -77,6 +78,13 @@ sap.ui.define(
 
         //opens the dialog
         popover.openBy(event.getParameter('domRef'));
+      },
+
+      onRatingChanged: function(event) {
+        var value = event.getParameter('value');
+        var message = this.getResourceBundle().getText('productRatingSuccess', [value]);
+
+        MessageToast.show(message);
       },
 
       /* =========================================================== */

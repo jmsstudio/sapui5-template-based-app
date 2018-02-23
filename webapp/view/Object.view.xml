@@ -3,6 +3,7 @@
 	xmlns:mvc="sap.ui.core.mvc" 
 	xmlns:form="sap.ui.layout.form" 
 	xmlns:core="sap.ui.core"
+	xmlns:custom="br.com.jmsstudio.productsmanagement.ProductsManagement.control"
 	xmlns:semantic="sap.m.semantic">
 
 	<semantic:FullscreenPage id="page" 
@@ -29,8 +30,9 @@
 				</attributes>
 			</ObjectHeader>
 
-				<mvc:XMLView viewName="br.com.jmsstudio.productsmanagement.ProductsManagement.view.ProductDetails" />
-				<core:Fragment fragmentName="br.com.jmsstudio.productsmanagement.ProductsManagement.view.SupplierInfo" type="XML" />
+			<mvc:XMLView viewName="br.com.jmsstudio.productsmanagement.ProductsManagement.view.ProductDetails" />
+			<custom:ProductRate valueSubmit="onRatingChanged"/>
+			<core:Fragment fragmentName="br.com.jmsstudio.productsmanagement.ProductsManagement.view.SupplierInfo" type="XML" />
 		</semantic:content>
 		<semantic:sendEmailAction>
 			<semantic:SendEmailAction id="shareEmail" press="onShareEmailPress"/>
